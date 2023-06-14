@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: ${APP_PROFILE:dev}
+  application:
+    name: geduc
+  servlet:
+    multipart:
+      max-file-size: ${MAX_FILE_SIZE}
+      max-request-size: ${MAX_REQUEST_SIZE}
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+      port: 27017
+      database: geduc
+    azure:
+      container: ${AZURE_CONTAINER}
+      connection-string: ${AZURE_CONNECTION_STRING}
+      token: ${AZURE_TOKEN}
