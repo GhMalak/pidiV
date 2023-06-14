@@ -1,0 +1,29 @@
+<section class="wrapper">
+    <div class="profile-container">
+        <app-spinner-overlay *ngIf="spinnerService.visibility | async" overlay="true"></app-spinner-overlay>
+        <div class="menu-container">
+            <div class="menu-content">
+                <div class="avatar-container">
+                    <img class="profile-photo" [src]="avatar" />
+                    <div class="edit-avatar-container">
+                        <mat-icon (click)="openAvatarModal()">
+                            edit
+                        </mat-icon>
+                    </div>
+                </div>
+                <p class="profile-name">{{loggedUser.name}}</p>
+            </div>
+            <div class="menu-options">
+                <mat-selection-list #shoes [multiple]="false">
+                    <mat-list-option class="list-option" *ngFor="let menu of menuItems" [value]="menu" [routerLink]="menu.path" (click)="executarOpcao(menu)">
+                        <mat-icon class="icon-option">{{menu.icon}}</mat-icon>
+                        {{menu.name}}
+                    </mat-list-option>
+                </mat-selection-list>
+            </div>
+        </div>
+        <div class="menu-page-content">
+            <router-outlet class="route"></router-outlet>
+        </div>
+    </div>
+</section>

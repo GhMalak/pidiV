@@ -1,0 +1,28 @@
+<mat-dialog-content class="wrapper">
+    <div class="modal-container">
+        <mat-icon class="close-icon" aria-hidden="false" aria-label="Example home icon" (click)="close()">close</mat-icon>
+        <div class="modal-content-container">
+            <div class="img-container">
+                <img [src]="thumbnail">
+            </div>
+            <h1 class="event-title">{{event.title}}</h1>
+            <p class="event-description" maxlength="5">{{event.description}}</p>
+            <div class="icon-container">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
+                <p>{{creatorOfEvent}}</p>
+            </div>
+            <div class="icon-container">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">schedule</mat-icon>
+                <p>{{event.duration}}</p>
+            </div>
+            <div class="icon-container">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                <p>{{event.status}}</p>
+            </div>
+            <div class="button-container">
+                <button *ngIf="!alreadySubscribed && !eventOwner" mat-raised-button color="primary" (click)="subscribeInEvent()">Inscreva-se</button>
+                <button *ngIf="alreadySubscribed || eventOwner" mat-raised-button color="primary" (click)="goToWatchEvent(event)">Assistir</button>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

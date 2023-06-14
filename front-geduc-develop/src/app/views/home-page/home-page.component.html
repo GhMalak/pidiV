@@ -1,0 +1,36 @@
+<section class="wrapper">
+    <app-spinner-overlay *ngIf="spinnerService.visibility | async" overlay="true"></app-spinner-overlay>
+    <div class="home-container">
+        <div class="info-container">
+            <div class="img-container">
+                <img src="assets/logo-home-page.svg">
+            </div>
+            <div class="text-container">
+                <div class="text-wrapper">
+                    <h1 class="text-title">Aprenda do melhor jeito, ensinando!</h1>
+                    <p class="text-subtitle">Crie e participe de eventos para contribuir na sua formação acadêmica.</p>
+                </div>
+                <div class="button-container">
+                    <button mat-raised-button color="primary" (click)="createEvent()">Crie seu evento</button>
+                </div>
+            </div>
+        </div>
+        <div class="events-container">
+            <div class="for-you-container">
+                <h1 class="for-you-text-title">Recomendados para você</h1>
+            </div>
+            <div class="events-container" *ngIf="hasEvents"> 
+                <div class="card-events-container" *ngFor="let event of events">
+                    <app-card-event [event]="event"></app-card-event>
+                </div>
+            </div>
+            <div class="events-container" *ngIf="!hasEvents"> 
+                <div>
+                    <h1>INFELIZMENTE, NÃO ENCONTRAMOS UM EVENTO QUE POSSUA TAGS COMPATÍVEIS COM AS QUE VOCÊ CADASTROU</h1>
+                    <br><br>
+                    <h2>você pode alterar suas tags <a routerLink="/profile/personal">clicando aqui</a></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

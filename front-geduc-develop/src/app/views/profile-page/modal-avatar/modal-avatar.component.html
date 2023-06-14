@@ -1,0 +1,19 @@
+<section class="modal-avatar-container">
+    <h1 mat-dialog-title>
+        Altere sua foto de perfil
+    </h1>
+
+    <div mat-dialog-content>
+        <div class="inputFile-container">
+            <div class="create-button-conta">
+                <button mat-raised-button color="primary"><input type="file" accept="image/*"
+                        (change)="inputFileChange($event)"></button>
+            </div>
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onDismiss()">Fechar</button>
+        <button mat-raised-button color="primary" (click)="onConfirm()" [disabled]="!hasChange || isLoading">Alterar foto</button>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+<div class="wrapper">
+    
+    <div class="search-container">
+        <div><h1 class="title-h1" routerLink="/home">GEDUC</h1></div>
+        <mat-icon aria-hidden="false" aria-label="Example search icon" class="icone">search</mat-icon>
+        <mat-form-field class="" appearance="outline" class="search-bar">
+            <mat-label>Procure um evento...</mat-label>
+            <input (keydown)="enterSubmit($event)" matInput type="text" [(ngModel)]="eventTitle">
+        </mat-form-field>
+    </div>
+    <div class="menu-container">
+        <div class="menu-items">
+            <mat-icon routerLink="/home" aria-label="Example home icon">home</mat-icon>
+            <mat-icon class="menu-icon" routerLink="profile/personal">account_circle</mat-icon>
+            <!-- <mat-icon  matBadge="15" matBadgeColor="warn" (click)="openModal()">notifications</mat-icon> -->
+            <div style="display: block;" *ngIf="notifications$ | async as notificationView">
+                <mat-icon matBadge="{{notificationView.length }}" matBadgeColor="warn" (click)="openModal()">notifications</mat-icon>
+            </div>
+        </div>
+    </div>
+</div>

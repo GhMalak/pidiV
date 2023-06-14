@@ -1,0 +1,33 @@
+<section class="wrapper">
+    <div class="content-container">
+        <h1 class="title-page">Meu perfil</h1>
+        <div class="form-container">
+            <div class="email-container">
+                <mat-form-field appearance="outline" class="email-field">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="text" [(ngModel)]="userEmail" disabled>
+                </mat-form-field>
+                <mat-icon>lock</mat-icon>
+            </div>
+            <mat-form-field class="example-chip-list" appearance="outline">
+                <mat-label>Suas habilidades</mat-label>
+                <mat-chip-list #chipList aria-label="Tech Selection">
+                  <mat-chip *ngFor="let tech of techs" (removed)="remove(tech)">
+                    {{tech}}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="Adiciona uma habilidade..."
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+              </mat-form-field> 
+              <div class="button-container">
+                <button mat-raised-button color="primary" (click)="changeUserTechs()">Salvar</button>
+              </div>                      
+        </div>
+    </div>
+</section>

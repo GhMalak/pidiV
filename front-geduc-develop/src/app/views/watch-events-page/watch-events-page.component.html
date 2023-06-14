@@ -1,0 +1,29 @@
+<section class="container">
+    <app-spinner-overlay *ngIf="spinnerService.visibility | async" overlay="true"></app-spinner-overlay>
+    <div class="container-playlist">
+        <div class="container-playlist-header">
+            <span>
+                <h2>Conteúdo do curso</h2>
+            </span>
+        </div>
+        <div class="videos-navigation" *ngFor="let file of files; let i = index">
+            <div class="cards-videos" (click)="showSelectedVideo(file)">
+                <mat-card-actions >
+                    {{i+1}}. {{file.name | slice:0:40}}
+                </mat-card-actions>
+            </div>
+        </div>
+        <div class="container-playlist-button">
+            <button mat-raised-button color="primary" (click)="generateCertificate()">Concluir Evento</button>
+        </div>
+        <div class="container-description">
+            <h3>Descrição do Curso</h3>
+            <p>{{event.description}}</p>
+        </div>
+    </div>
+    <div class="container-video">
+        <mat-card>
+            <video id="video" width="200" height="200" controls></video>
+        </mat-card>
+    </div>
+</section>

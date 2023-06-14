@@ -1,0 +1,9 @@
+<section class="wrapper">
+    <app-spinner-overlay *ngIf="spinnerService.visibility | async" overlay="true"></app-spinner-overlay>
+    <div class="certificate-container">
+        <h1 class="title-page">Meus certificados</h1>
+        <div class="certificates-cards" *ngFor="let certificate of certificates">
+            <app-certificate-card [certificate]="certificate"></app-certificate-card>
+        </div>
+    </div>
+</section>

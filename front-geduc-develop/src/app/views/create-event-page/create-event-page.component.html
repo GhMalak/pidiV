@@ -1,0 +1,90 @@
+<section class="wrapper">
+    <app-spinner-overlay *ngIf="spinnerService.visibility | async" overlay="true"></app-spinner-overlay>
+    <form class="criar-evento-container" [formGroup]="eventForm" *ngIf="eventForm">
+        <div class="titulo">
+            <span *ngIf="!isUpdate">Crie seu evento</span>
+            <span *ngIf="isUpdate">Altere seu evento</span>
+        </div>
+        <div>
+            <mat-form-field id="campo-titulo" appearance="outline">
+                <mat-label>Título do evento</mat-label>
+                <input matInput type="text" formControlName="eventTitle" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field id="campo-descricao" appearance="outline">
+                <mat-label>Descrição</mat-label>
+                <textarea matInput formControlName="eventDescription" maxlength="500" required></textarea>
+            </mat-form-field>
+        </div>
+        <div class="mat-chip-list-mateus">
+            <mat-form-field class="example-chip-list" appearance="outline" >
+                <mat-label>Tags do evento</mat-label>
+                <mat-chip-list #chipList aria-label="Tech selection" formControlName="techs" required>
+                    <mat-chip *ngFor="let tech of techs" (removed)="remove(tech)" >
+                      {{tech}}
+                      <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                    <input placeholder="Adiciona uma habilidade..."
+                           [matChipInputFor]="chipList"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="add($event)"
+                        >
+                  </mat-chip-list>
+                </mat-form-field>
+            </div>
+        <div>
+            <mat-form-field class="campo-duracao" appearance="outline">
+                <mat-label>Duração</mat-label>
+                <input matInput formControlName="duration" mask="00:00" required>
+            </mat-form-field>
+        </div>
+    </form>
+    <div class="adicione-aulas-container">
+        <div class="titulo">
+            <span>Adicione as aulas</span>
+        </div>
+        <div class="certificates-cards" *ngFor="let file of files">
+            <div class="card-container">
+                <mat-card class="card">
+                    <span>{{file.name | slice:0:40}}<span *ngIf="file.name.length > 40">...</span></span>
+                    <div class="icons" (click)="deleteFileOnList(file)">
+                        <mat-icon>delete</mat-icon>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+        <div class="inputFile-container">
+            <div class="create-button-conta">
+                <button mat-raised-button color="primary"><input type="file" accept="video/*"
+                        (change)="inputFileChange($event)" multiple></button>
+            </div>
+        </div>
+        <div class="titulo">
+            <span>Adicione a miniatura</span>
+        </div>
+        <div>
+            <div class="certificates-cards">
+                <div class="card-container">
+                    <mat-card class="card" *ngIf="thumbnail">
+                        <span>{{thumbnail.name | slice:0:40}}<span *ngIf="thumbnail.length > 40">...</span></span>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="inputFile-container">
+                <div class="create-button-conta">
+                    <button mat-raised-button color="primary"><input type="file" accept="image/*"
+                            (change)="inputThumbChange($event)"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div id="botao-criar-evento">
+        <button *ngIf="!isUpdate && eventForm" class="botao-evento" mat-raised-button color="primary" (click)="createEvent('create')" [disabled]="!eventForm.valid || sendingEvent">CRIAR EVENTO</button>
+        <button *ngIf="isUpdate && eventForm" class="botao-evento" mat-raised-button color="primary" (click)="createEvent('edit')" [disabled]="!eventForm.valid || !hasChangeOn && eventForm.valid || sendingEvent">ALTERAR EVENTO</button>
+        <button mat-stroked-button color="primary" (click)="voltar()">VOLTAR</button>
+    </div>
+</section>

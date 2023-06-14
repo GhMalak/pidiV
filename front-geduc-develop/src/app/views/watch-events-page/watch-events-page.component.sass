@@ -1,0 +1,54 @@
+.container
+    display: flex
+    
+    .container-playlist
+        height: calc( 100vh - 102px )
+        margin: 0
+        padding: 0
+        display: flex
+        flex:1
+        flex-direction: column
+        background: #FFF
+        width: 20%
+        border-top: 2px solid black
+        min-height: 600px
+
+        .container-playlist-header
+            text-align: center
+
+        .container-playlist-button
+            margin-top: 2em
+            text-align: center
+            button
+                width: 80%
+        .container-description
+            text-align: center
+            margin-top: 3em
+            font-weight: 500
+            p
+                word-wrap: break-word
+                text-align: left
+                padding-left: 1em
+
+    .container-video
+        display: flex
+        flex: 4
+        margin: 2em
+        ::ng-deep .mat-card
+            display: flex
+            width: 100%
+            max-height: 700px
+            align-items: center
+
+            video 
+                width: 100%
+                height: 80%
+
+    .cards-videos
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 50px
+        cursor: pointer
+    .cards-videos:hover
+        background: #a8a8a813

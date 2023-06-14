@@ -1,0 +1,4 @@
+<div class="container">
+    <app-header *ngIf="_router.url != '/login' && _router.url != '/sign-up' && _router.url != '/change-password'"></app-header>
+    <router-outlet></router-outlet>
+</div>

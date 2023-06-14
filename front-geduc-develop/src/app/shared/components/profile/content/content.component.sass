@@ -1,0 +1,34 @@
+.wrapper
+    display: flex
+    flex: 1
+    .content-container
+        display: flex
+        flex: 1
+        flex-direction: column
+        .title-page
+            font-family: 'Lato'
+            font-style: normal
+            font-weight: 700
+            font-size: 40px
+        .form-container
+            display: flex
+            flex: 1
+            flex-direction: column
+            .email-container
+                display: flex
+                flex: 1
+                align-items: center
+                .email-field
+                    width: 25rem
+                mat-icon
+                    padding-left: 1rem
+            .example-chip-list
+                width: 40rem
+            &::ng-deep
+                .mat-chip-remove
+                    border: none
+                    width: 100%
+                    height: 0
+                    display: flex
+                    flex: 1
+                    align-items: center

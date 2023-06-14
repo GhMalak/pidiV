@@ -1,0 +1,10 @@
+<div class="card-container">
+    <mat-card class="card">
+        {{event.title}}
+        <div class="icons">
+            <mat-icon (click)="goToWatchEvent(event)">play_arrow</mat-icon>
+            <mat-icon (click)="callEditEvents(event)">edit</mat-icon>
+            <mat-icon (click)="cancelEvent(event)">delete</mat-icon>
+        </div>
+    </mat-card>
+</div>

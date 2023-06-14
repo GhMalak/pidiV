@@ -1,0 +1,50 @@
+.wrapper
+    position: realative
+    .modal-container
+        width: 380px
+        height: 100vh
+        position: absolute
+        top: 0
+        right: 0
+        font-size: 18px
+        background-color: #FFFFFF
+    .close-icon
+        padding: 1rem 0 0 1rem
+        &:hover
+            cursor: pointer
+    .modal-content-container
+        display: flex
+        flex-direction: column
+        height: calc(100vh - 28px)
+        justify-content: center
+        align-items: center
+        text-align: center
+        .img-container
+            margin-bottom: 1rem
+            img
+                width: 300px
+                height: 130px
+        .event-title  
+            font-family: 'Lato'
+            font-style: normal
+            font-weight: 700
+            font-size: 28px
+        .event-description
+            font-family: 'Lato'
+            font-style: normal
+            font-weight: 400
+            font-size: 15px
+            color: #828282
+            width: 35ch
+            word-wrap: break-word
+        .icon-container
+            display: flex
+            width: 200px
+            justify-content: flex-start
+            align-content: center
+            p
+                padding: 0.2rem 0 0 0.5rem
+        .button-container
+            margin-top: 1rem
+            button
+                width: 300px

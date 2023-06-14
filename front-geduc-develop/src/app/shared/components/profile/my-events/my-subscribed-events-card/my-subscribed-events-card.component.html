@@ -1,0 +1,9 @@
+<div class="card-container">
+    <mat-card class="card">
+        {{eventSubscribed.title}}
+        <div class="icons">
+            <mat-icon (click)="goToWatchEvent(eventSubscribed)">play_arrow</mat-icon>
+            <mat-icon (click)="unsubscribeEvent(eventSubscribed.eventNumber)">delete</mat-icon>
+        </div>
+    </mat-card>
+</div>

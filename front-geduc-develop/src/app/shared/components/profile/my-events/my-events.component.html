@@ -1,0 +1,17 @@
+<app-spinner-overlay *ngIf="spinnerService.visibility | async" overlay="true"></app-spinner-overlay>
+<section class="wrapper">
+    <div class="certificate-container">
+        <div>
+            <h1 class="title-page">Meus eventos Criados</h1>
+            <div class="certificates-cards" *ngFor="let event of events">
+                <app-my-events-card (listEvents)="callBackListEvents($event)" [event]="event"></app-my-events-card>
+            </div>
+        </div>
+        <div class="subscribed-events-container">
+            <h1 class="title-page">Meus eventos Inscritos</h1>
+            <div class="certificates-cards" *ngFor="let eventSubscribed of eventsSubscribed">
+                <app-my-subscribed-events-card [eventSubscribed]="eventSubscribed" (listSubscribedEvents)="callBackListEvents($event)"></app-my-subscribed-events-card>
+            </div>
+        </div>
+    </div>
+</section>

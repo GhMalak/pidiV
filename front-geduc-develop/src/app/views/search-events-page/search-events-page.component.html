@@ -1,0 +1,25 @@
+<section class="wrapper">
+    <div class="home-container">
+        <div class="events-container">
+            <div class="events-container" *ngIf="hasEvents && !isLoading"> 
+                <div class="card-events-container" *ngFor="let event of events">
+                    <app-card-event [event]="event"></app-card-event>
+                </div>
+            </div>
+            <app-spinner-overlay *ngIf="spinnerService.visibility | async" overlay="true"></app-spinner-overlay>
+            <div class="events-container"  *ngIf="!hasEvents && !isLoading"> 
+                <div>
+                    <h1>INFELIZMENTE, NÃO ENCONTRAMOS UM EVENTO COM ESSE NOME...</h1>
+                    <br><br>
+                    <h2>Recomendamos ajustar sua busca. Aqui estão algumas ideias:</h2>
+                    <br>
+                    <ul>
+                        <li>• Verifique se todas as palavras estão escritas corretamente</li>
+                        <li>• Tente usar termos de pesquisa diferentes</li>
+                        <li>• Tente usar termos de pesquisa mais genéricos como "Java", "Angular", "Blender"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
